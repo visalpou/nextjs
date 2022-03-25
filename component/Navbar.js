@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav>
         <div className='logo'>
-            <Image src='/logo.png' width={128} height={100} />
+            <Image src='/apple_logo.png' width={150} height={100} />
         </div>
         <Link href='/'><a>Home</a></Link>
         <Link href='/about'><a>About</a></Link>
