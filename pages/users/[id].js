@@ -8,11 +8,12 @@ export const getStaticPaths = async () =>{
         return {
             params:{ id: user.id.toString() }
         }
-    })
+    })  
 
     return{
         paths,
         fallback:false
+
     }
 }
 
