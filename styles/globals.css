@@ -1,31 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&family=Nunito:wght@300&display=swap');@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans+Khmer&family=Nunito:wght@300&display=swap');
+@tailwind components;
+@tailwind utilities;
 
 body{
-  background: white;
-  font-family: 'Nunito', sans-serif;
-  color: #333;
+  @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white;
+  font-family:'Noto Sans Khmer','Inter', sans-serif -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+.test{
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+.icon{
+  width: 25px;
+}
+
 a{
   color: #333;
   text-decoration: none;
 }
 .content{
-  max-width: 960px;
+  max-width: 1060px;
   margin : 0 auto;
 }
 nav{
-  margin: 10px auto 80px;
-  padding: 10px 0;
+  padding: 10px 250px;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   border-bottom: 1px solid #ddd;
+  background-color: white;
 }
 nav a{
-  margin-left: 12px;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 0 15px;
+  border-right: 1px solid black;
+  color: rgb(248 113 113 / var(--tw-text-opacity));
 }
-nav .logo{
-  margin-right: auto;
+nav a:hover{
+  color: black;
+}
+nav a:focus{
+  color: black;
+}
+.logo{
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0px;
+  background-color: #333;
+  color: #ddd;
+}
+.logo a{
+  color: #fff;
+  font-size: 30px;
+  font-weight: 900;
+}
+.article{
+  width: 100%;
+  min-height: 50vh;
+}
+.article_img{
+  background-image: url("/nfl.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  width: 100%;
+}
+.card span{
+  width: 100% !important;
+  height: 100% !important;
+}
+.card{
+  background-image: url("/sport.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  width: 100%;
 }
 footer{
   display: block;
@@ -41,4 +94,20 @@ footer{
 .not-found a{
   color: #4979ff;
   text-decoration: underline;
+}
+.lastpara_img{
+  background-image: url('/ozil.webp');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  width: 100%;
+  height: auto;
+}
+.weekend_img{
+  background-image: url('/team.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  width: 100%;
+  height: 100px;
 }

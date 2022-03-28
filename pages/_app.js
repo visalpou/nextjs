@@ -1,6 +1,7 @@
 import Layout from '../component/Layout'
 import '../styles/globals.css'
 import Head from 'next/head'
+import {ThemeProvider} from 'next-themes'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -9,9 +10,11 @@ function MyApp({ Component, pageProps }) {
         <title>Tos Mer | Home</title>
         <meta name="keywords" content="news"></meta>
     </Head>
-    <Layout>
-        <Component {...pageProps}/>
-    </Layout>
+    <ThemeProvider enableSystem={true} attribute="class">
+      <Layout> 
+          <Component {...pageProps}/>
+      </Layout>
+    </ThemeProvider>
   </>
   )
 }

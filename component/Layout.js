@@ -4,9 +4,11 @@ import Navbar from './Navbar'
 
 function Layout({children}) {
   return (
-    <div className='content'>
+    <div>
         <Navbar/>
-            {children}
+            <div className='content'>
+              {children}
+            </div>
         <Footer/>
     </div>
   )
