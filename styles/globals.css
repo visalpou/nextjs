@@ -1,11 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&family=Nunito:wght@300&display=swap');@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&family=Nunito:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans+Khmer&family=Nunito:wght@300&display=swap');
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body{
   @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white;
-  font-family:'Noto Sans Khmer','Inter', sans-serif -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:'Noto Sans Khmer',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+h3,h4{
+  font-family: 'inter';
+  font-weight: 700;
+}
+:root{
+  --color-primary-100: #000;
+  --color-primary-200: #eee;
+  --color-primary-300:rgb(248 113 113);
+}
+
+.big_article_title{
+    margin-top: 275px;
+    font-size: 1.8vw;
+    font-weight: 900;
+    color: var(--color-primary-200);
+    margin-left: 12px;
+    cursor: pointer;
+}
+.big_article_title:hover{
+  color: var(--color-primary-300);
+
 }
 
 .test{
@@ -13,48 +36,50 @@ body{
   width: 100%;
   z-index: 1000;
 }
+
 .icon{
   width: 25px;
 }
 
 a{
-  color: #333;
+  color: var(--color-primary-100);;
   text-decoration: none;
 }
 .content{
   max-width: 1060px;
   margin : 0 auto;
 }
+
 nav{
   padding: 10px 250px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #ddd;
-  background-color: white;
+  border-bottom: 1px solid  var(--color-primary-200);
+  background-color: var(--color-primary-200);
 }
+
 nav a{
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.5vw;
   padding: 0 15px;
-  border-right: 1px solid black;
-  color: rgb(248 113 113 / var(--tw-text-opacity));
+  border-right: 1px solid var(--color-primary-100);;
 }
 nav a:hover{
-  color: black;
+  color: var(--color-primary-100);;
 }
 nav a:focus{
-  color: black;
+  color:  var(--color-primary-100);
 }
 .logo{
   display: flex;
   justify-content: space-around;
   padding: 12px 0px;
-  background-color: #333;
-  color: #ddd;
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-200);
 }
 .logo a{
-  color: #fff;
+  color: var(--color-primary-200);
   font-size: 30px;
   font-weight: 900;
 }
@@ -63,12 +88,13 @@ nav a:focus{
   min-height: 50vh;
 }
 .article_img{
-  background-image: url("/nfl.jpg");
+  background-image: url("/ozil.webp");
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center;
   width: 100%;
 }
+
 .card span{
   width: 100% !important;
   height: 100% !important;
@@ -80,13 +106,21 @@ nav a:focus{
   background-position:center;
   width: 100%;
 }
+.last_card{
+  background-image: url("/sport.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  width: 100%;
+  height: 225px;
+}
 footer{
   display: block;
   text-align: center;
   padding: 30px 0;
   margin-top: 60px;
   color: #777;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid var(--color-primary-200);
 }
 .not-found{
   text-align: center;

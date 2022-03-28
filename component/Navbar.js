@@ -39,9 +39,9 @@ function Navbar() {
           {renderThemeChange()}
       </div>
       <nav>   
-          <Link href='/category/sport'><a>កីទ្បា</a></Link>    
-          <Link href='/category/national-football'><a>បាល់ទាត់ជាតិ</a></Link>    
-          <Link href='/category/national-boxing'><a>ប្រដាល់ជាតិ</a></Link>    
+          <Link href='/category/sport'><a className='text-primary-100'>កីទ្បា</a></Link>    
+          <Link href='/category/national-football'><a className='text-primary-100'>បាល់ទាត់ជាតិ</a></Link>    
+          <Link href='/category/national-boxing'><a className='text-primary-100'>ប្រដាល់ជាតិ</a></Link>    
       </nav>
     </div>
   )

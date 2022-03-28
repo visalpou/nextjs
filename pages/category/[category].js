@@ -21,7 +21,7 @@ const CategoryDetail = ({cate}) => {
     return(
       <>
       {/* silder */}
-      <div className="mb-5 pt-32 ">
+      <div className="mb-5 pt-28">
           <Swiper
             spaceBetween={50}
             autoplay={{
@@ -47,20 +47,38 @@ const CategoryDetail = ({cate}) => {
       </div>
         
       {/* detail */}
-      <div className="grid lg:grid-cols-3 gap-5 article mb-5">
+      <div className="grid lg:grid-cols-3 lg:gap-5 gap-0 article mb-5 px-5 relative">
           {/* big article */}
-          <div className="col-span-2 article_img rounded-md"></div> 
+          <div className="lg:col-span-2 md:col-span-1 article_img rounded-md">
+              <h1 className="big_article_title">ស្អាតម្ល៉េះទេលោក! មួយឈុតនេះ ស្រីនា សមខ្លាំង ឡេីងស្លីមខ្លាំង</h1>
+              <article className="p-3 space-y-2">      
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-sm border-2 text-white p-1 bg-primary-100 rounded-lg w-auto">កីទ្បា</h3>
+                    <h4 className="text-sm">Written by <span className="font-bold text-lg text-primary-100">Summer</span> </h4>
+                  </div>
+                  <div className="flex gap-5">
+                      <div className="flex gap-2">
+                          <CalendarIcon className="w-4" />
+                          <span className="text-sm font-semibold">27-March-2021 </span>
+                      </div>
+                      <div className="flex gap-2">
+                          <ClockIcon className="w-4" />
+                          <span className="text-sm font-semibold">3pm - 18 hour ago </span>
+                      </div>                
+                  </div>
+              </article>
+          </div> 
            {/* small article */}
           <div className="rounded-md grid lg:grid-rows-2 border-2 bg-gray-300">
               <div className="card"></div>
               <article className="p-3 space-y-2">
-                  <div>
-                      <a className="font-semibold text-xl">ខ្ចិលប្រើឆ័ត្រពេលភ្លៀង!</a>
+                  <div className="space-y-2">
+                      <a className="font-semibold text-xl hover:text-primary-100 cursor-pointer">ខ្ចិលប្រើឆ័ត្រពេលភ្លៀង!</a>
                       <p className="text-sm dark:text-black font-semibold">បុរសម្នាក់អាយុ៤២ឆ្នាំ បានចំណាយពេល២ឆ្នាំ ក្នុងការជីកដីជម្រៅ៣ម៉ែត្រ និងប្រវែង១២ម៉ែត្រពីផ្ទះរបស់គាត់</p>
                   </div>      
                   <div className="flex items-center gap-2">
-                    <h3 className="text-sm border-2 text-white p-1 bg-red-400 rounded-lg w-auto">កីទ្បា</h3>
-                    <h4 className="text-sm">Written by <span className="font-bold text-lg text-red-400">Summer</span> </h4>
+                    <h3 className="text-sm border-2 text-white p-1 bg-primary-100 rounded-lg w-auto">កីទ្បា</h3>
+                    <h4 className="text-sm">Written by <span className="font-bold text-lg text-primary-100">Summer</span> </h4>
                   </div>
                   <div className="flex gap-5">
                       <div className="flex gap-2">
@@ -77,23 +95,22 @@ const CategoryDetail = ({cate}) => {
       </div>      
 
        {/* អត្ថបទចុងក្រោយ  */}
-      
-       <div className="grid lg:grid-cols-3 gap-5 article mb-5">
-          <div className="col-span-2">
-              <h1 className="text-2xl font-semibold my-3">អត្ថបទចុងក្រោយ</h1>
+       <div className="lg:grid lg:grid-cols-3 gap-5 article mb-5 px-5">
+          <div className="md:col-span-2 col-span-0">
+              <h1 className="text-2xl font-semibold my-2 ml-3">អត្ថបទចុងក្រោយ</h1>
                {/* big article */}
-              <div className="col-span-2 article_img rounded-md"></div> 
+              <div className="lg:col-span-2 md:col-span-1 article_img rounded-md"></div> 
               {/* small article */}
               <div className="rounded-md grid lg:grid-cols-2">
-                  <div className="card rounded-lg"></div>
+                  <div className="last_card rounded-lg"></div>
                   <article className="p-3 space-y-2">
-                      <div>
-                          <a className="font-semibold text-xl dark:text-white">ខ្ចិលប្រើឆ័ត្រពេលភ្លៀង!</a>
+                      <div className="space-y-2">
+                          <a className="font-semibold text-xl dark:text-white hover:text-primary-100 cursor-pointer">ខ្ចិលប្រើឆ័ត្រពេលភ្លៀង!</a>
                           <p className="text-sm">បុរសម្នាក់អាយុ៤២ឆ្នាំ បានចំណាយពេល២ឆ្នាំ ក្នុងការជីកដីជម្រៅ៣ម៉ែត្រ និងប្រវែង១២ម៉ែត្រពីផ្ទះរបស់គាត់</p>
                       </div>      
                       <div className="flex items-center gap-2">
-                        <h3 className="text-sm border-2 text-white p-1 bg-red-400 rounded-lg w-auto">កីទ្បា</h3>
-                        <h4 className="text-sm">Written by <span className="font-bold text-lg">Summer</span> </h4>
+                        <h3 className="text-sm border-2 text-white p-1 bg-primary-100 rounded-lg w-auto">កីទ្បា</h3>
+                        <h4 className="text-sm">Written by <span className="font-bold text-lg text-primary-100">Summer</span> </h4>
                       </div>
                       <div className="flex gap-5">
                           <div className="flex gap-2">
@@ -110,7 +127,7 @@ const CategoryDetail = ({cate}) => {
           </div>
           <div>
               <div>
-                  <Image src="/ozil.webp"  width={350} height={350} objectFit="cover" />
+                  <Image src="/team.jpg"  width={1000} height={600} objectFit="cover" />
               </div>
               <div>
                   <h1 className="text-2xl font-semibold my-3">ប្រចាំសប្តាហ៍</h1>
@@ -119,12 +136,12 @@ const CategoryDetail = ({cate}) => {
                       <div>
                           <article className="space-y-2 mb-3">
                           <div>
-                              <a className="font-semibold text-lg dark:text-white">ខ្ចិលប្រើឆ័ត្រពេលភ្លៀង!</a>
+                              <a className="font-semibold text-lg dark:text-white hover:text-primary-100 cursor-pointer">ខ្ចិលប្រើឆ័ត្រពេលភ្លៀង!</a>
                               <p className="text-sm">បុរសម្នាក់អាយុ៤២ឆ្នាំ បានចំណាយពេល២ឆ្នាំ ...</p>
                           </div>      
                           <div className="flex items-center gap-2">
-                            <h3 className="text-xs border-2 text-white p-1 bg-red-400 rounded-lg w-auto">កីទ្បា</h3>
-                            <h4 className="text-xs">Written by <span className="font-bold text-xs">Summer</span> </h4>
+                            <h3 className="text-xs border-2 text-white p-1 bg-primary-100 rounded-lg w-auto">កីទ្បា</h3>
+                            <h4 className="text-xs">Written by <span className="font-bold text-xs text-primary-100">Summer</span> </h4>
                           </div>
                           <div className="gap-5">
                               <div className="flex gap-2">
@@ -141,7 +158,7 @@ const CategoryDetail = ({cate}) => {
                   </div>
               </div>
               <div>
-                  <Image src="/ronaldo.webp"  width={350} height={350} objectFit="cover" />
+                  <Image src="/nfl.jpg"  width={1000} height={600} objectFit="cover" />
               </div>
           </div>      
        </div>

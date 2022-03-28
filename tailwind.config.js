@@ -1,3 +1,4 @@
+
 module.exports = {
   darkMode: 'class',
   content: [
@@ -5,7 +6,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        primary:{
+          100: "rgb(248 113 113 / var(--tw-text-opacity))",
+        },
+      },
+    },
   },
   plugins: [],
 }
