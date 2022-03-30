@@ -51,7 +51,7 @@ a{
 }
 
 nav{
-  padding: 10px 250px;
+  padding: 10px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,6 +105,8 @@ nav a:focus{
   background-size:cover;
   background-position:center;
   width: 100%;
+  height: 25vh; 
+  border-radius: 7px 7px 0px 0px;
 }
 .last_card{
   background-image: url("/sport.jpg");

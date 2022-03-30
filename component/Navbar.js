@@ -35,7 +35,7 @@ function Navbar() {
     <div className='test'>
       <div className='logo'>
           <BeakerIcon className="icon" />
-          <Link href='/category/sport'>តោះមើល</Link>
+          <Link href='/'>តោះមើល</Link>
           {renderThemeChange()}
       </div>
       <nav>   
