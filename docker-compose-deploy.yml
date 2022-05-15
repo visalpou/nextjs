@@ -1,0 +1,48 @@
+version: "3.3"
+
+services:
+  app:
+    container_name: m.share.app
+    build:
+      context: .
+    restart: always
+    volumes:
+      - ./app:/app
+      - static-data:/vol/web
+    environment:
+      - SECRET_KEY=devsecretkey
+      - DEBUG=1
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=changeme
+      - ALLOWED_HOSTS=3.0.96.243,localhost,ec2-3-0-96-243.ap-southeast-1.compute.amazonaws.com,127.0.0.1
+    depends_on:
+      - db
+
+  db:
+    container_name: m.share.db
+    image: postgres:13-alpine
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=changeme
+
+  proxy:
+    container_name: m.share.proxy
+    build:
+      context: ./proxy
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - 80:8000
+    volumes:
+      - static-data:/vol/static
+
+volumes:
+  postgres-data:
+  static-data:
