@@ -2,11 +2,12 @@ import React from "react";
 import { CalendarIcon, ClockIcon } from "@heroicons/react/solid";
 import ThisWeek from "./ThisWeek";
 
-const LastPara = () => {
+const LastPara = ({
+  
+}) => {
   return (
     <div className="lg:grid lg:grid-cols-3 gap-5 article mb-5">
       <div className="md:col-span-2 col-span-0">
-        <h1 className="text-2xl font-semibold my-3 ml-3">អត្ថបទចុងក្រោយ</h1>
         {/* big article */}
         <div className="lg:col-span-2 md:col-span-1 article_img rounded-md"></div>
         {/* small article */}

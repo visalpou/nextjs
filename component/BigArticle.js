@@ -1,7 +1,14 @@
 import React from 'react'
 import { CalendarIcon , ClockIcon } from '@heroicons/react/solid'
 
-function BigArticle() {
+function BigArticle({
+    title,
+    image,
+    date,
+    time,
+    topic,
+    author
+}) {
   return (
     <div className="lg:col-span-2 md:col-span-1 article_img rounded-md">
         <h1 className="big_article_title">ស្អាតម្ល៉េះទេលោក! មួយឈុតនេះ ស្រីនា សមខ្លាំង ឡេីងស្លីមខ្លាំង</h1>
