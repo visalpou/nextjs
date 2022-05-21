@@ -12,10 +12,10 @@ function NotFound() {
     }, [])
 
     return (
-    <div className='not-found'>
+    <div className='text-center'>
         <h1>Ooooooops.......</h1>
         <h2>That page cannot be found</h2>
-        <p>Go to back to the <Link href='/'> Homepage </Link> </p>
+        <p className='text-primary-300 no-underline'>Go to back to the <Link href='/'> Homepage  </Link> </p>
     </div>
     )
 }

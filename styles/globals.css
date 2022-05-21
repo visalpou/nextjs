@@ -1,201 +1,141 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&family=Nunito:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans+Khmer&family=Nunito:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body{
-  @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white;
-  font-family:'Noto Sans Khmer',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+h1,
+h2,
+h3,
+h4,
+p {
+  line-height: 1.6; 
 }
-h3,h4{
-  font-family: 'inter';
+
+h1,
+h2,
+h3,
+h4,
+p.bold {
   font-weight: 700;
 }
-:root{
-  --color-primary-100: #000;
-  --color-primary-200: #eee;
-  --color-primary-300:rgb(248 113 113);
+
+:root {
+  font-size: 14px;
+  --color-text: #fff;
+  --color-button-text: #0b0e11;
+  --color-primary-100: #dee3ea;
+  --color-primary-200: #b2bdcd;
+  --color-primary-300: #90959d;
+  --color-primary-600: #323d4d;
+  --color-primary-700: #242c37;
+  --color-primary-800: #181a21;
+  --color-primary-900: #0b0e11;
+  --color-secondary-washed-out: #879eed;
+  --color-secondary: #5575e7;
+  --color-accent-glow: rgba(253, 77, 77, 0.3);
+  --color-accent: #F9BD2B;
+  --color-accent-hover: #ffd52e;
+  --color-accent-disabled: #f1e39a;
+  --screen-height-reduction: 0px;
+  --color-primary-100-translucent: rgba(222, 227, 234, 0.15);
+}
+.dark {
+  font-size: 14px;
+  --color-text: #0b0e11;
+  --color-button-text: #f1f1f1;
+  --color-primary-100: #dee3ea;
+  --color-primary-200: #b2bdcd;
+  --color-primary-300: #474d57;
+  --color-primary-600: #323d4d;
+  --color-primary-700: #f5f5f5;
+  --color-primary-800: #fafafa;
+  --color-primary-900: #ffffff;
+  --color-secondary-washed-out: #879eed;
+  --color-secondary: #5575e7;
+  --color-accent-glow: rgba(253, 77, 77, 0.3);
+  --color-accent: #fcd535;
+  --color-accent-hover: #ffd52e;
+  --color-accent-disabled: #f1e39a;
+  --screen-height-reduction: 0px;
+  --color-primary-100-translucent: rgba(222, 227, 234, 0.15);
+
 }
 
-.big_article_title{
-    margin-top: 275px;
-    font-size: 1.8vw;
-    font-weight: 900;
-    color: var(--color-primary-200);
-    margin-left: 12px;
-    cursor: pointer;
-}
-.big_article_title:hover{
-  color: var(--color-primary-300);
-
+h1 {
+  font-size: 4rem;
 }
 
-.test{
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
+h2 {
+  font-size: 2.8rem;
 }
 
-.icon{
-  width: 25px;
+h3 {
+  font-size: 2rem;
 }
 
-a{
-  color: var(--color-primary-100);;
-  text-decoration: none;
-}
-.content{
-  padding-top: 140px;
-  max-width: 1060px;
-  margin : 0 auto;
+h4 {
+  font-size: 1.4rem;
 }
 
-nav{
-  padding: 10px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid  var(--color-primary-200);
-  background-color: var(--color-primary-200);
+p {
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-nav a{
-  font-weight: 700;
-  font-size: 20px;
-  padding: 0 15px;
-  border-right: 1px solid var(--color-primary-100);;
-}
-nav a:hover{
-  color: var(--color-primary-100);;
-}
-nav a:focus{
-  color:  var(--color-primary-100);
-}
-.logo{
-  display: flex;
-  justify-content: space-around;
-  padding: 12px 0px;
-  background-color: var(--color-primary-100);
-  color: var(--color-primary-200);
-}
-.logo a{
-  color: var(--color-primary-200);
-  font-size: 30px;
-  font-weight: 900;
-}
-.article{
-  width: 100%;
-  min-height: 50vh;
-}
-.article_img{
-  background-image: url("/ozil.webp");
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:center;
-  width: 100%;
+p.small {
+  font-size: 0.85rem;
 }
 
-.card span{
-  width: 100% !important;
-  height: 100% !important;
+/* for firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-700) rgba(0, 0, 0, 0);
 }
 
-.last_card{
-  background-image: url("/sport.jpg");
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:center;
-  width: 100%;
-  height: 225px;
-}
-footer{
-  display: block;
-  text-align: center;
-  padding: 30px 0;
-  color: #777;
-  border-top: 1px solid var(--color-primary-200);
-}
-.not-found{
-  text-align: center;
-}
-.not-found a{
-  color: #4979ff;
-  text-decoration: underline;
-}
-.lastpara_img{
-  background-image: url('/ozil.webp');
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-position: center;
-  width: 100%;
-  height: auto;
+/* for non-firefox */
+::-webkit-scrollbar {
+  overflow: overlay;
+  width: 8px;
+  /* shouldnt hardcode width, pls find way to make it dynamic, thin wasn't working for me...*/
 }
 
-.weekend_img{
-  background-image: url('/team.jpg');
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-position: center;
-  width: 100%;
-  height: 100px;
+::-webkit-scrollbar-track {
+  display: initial;
 }
-.big_artical{
-  width: 100%;
-  height: 350px;
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-700);
+  border-radius: 5px;
+}
+
+
+::-webkit-resizer {
+  background: var(--color-primary-700);
+}
+
+#nprogress {
   position: relative;
+  z-index: 9999999;
 }
-.big_artical_image{
-    inset: 0px;
-    box-sizing: border-box;
-    padding: 0px;
-    border: none;
-    margin: auto;
-    display: block;
-    width: 0px;
-    height: 0px;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    filter: none;
-    background-size: cover;
-    background-image: none;
+
+#nprogress .bar {
+  background: var(--color-accent-hover) !important;
 }
-.small_artical{
-  width: 100%;
-  height: 350px;
+
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--color-accent-hover),
+    0 0 5px var(--color-accent-hover) !important;
 }
-.small_artical_image{
-  inset: 0px;
-    box-sizing: border-box;
-    padding: 0px;
-    border: none;
-    margin: auto;
-    display: block;
-    width: 0px;
-    height: 0px;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    filter: none;
-    background-size: cover;
-    background-image: none;
+
+#nprogress .spinner-icon {
+  border-top-color: var(--color-accent-hover) !important;
+  border-left-color: var(--color-accent-hover) !important;
 }
-.desc{
-  bottom: 0;
-  position: absolute;
-  padding: 15px;
-  color: white;
+
+.big_artical{
+width: 100%;
+height: 350px;
+position: relative;
 }
-.card{
-  background-repeat:no-repeat;
-  background-size:cover;
-  width: 100%;
-  height: 100%; 
-  border-radius: 7px 7px 0px 0px;
-  z-index: -1;
-}
+
+
+

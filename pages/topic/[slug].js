@@ -1,6 +1,7 @@
-import { CalendarIcon, ClockIcon } from "@heroicons/react/solid";
-import env from "./../env";
+import React from "react";
+import env from '../../env'
 import Image from "next/image";
+import { CalendarIcon, ClockIcon } from "@heroicons/react/solid";
 import {
   CardTitle,
   CardDesc,
@@ -9,23 +10,21 @@ import {
   NewsType,
   Timeformat,
   Label,
-} from "../component";
-
-export const getServerSideProps = async () => {
-  const res = await fetch(`${env.apiUrl}/news`);
-  console.log(env.apiUrl);
-  const data = await res.json();
+} from "../../component";
+export async function getServerSideProps({ params }) {
+  const data = await fetch(`${process.env.API_URL}/news/?topics__name=${params.slug}`)
+  const news = await data.json();
+  console.log(news);
   return {
     props: {
-      data: data,
+      news: news.results,
     },
   };
-};
+}
 
-export default function Index({ data }) {
+const CategoryDetail = ({ news }) => {
   return (
-    <div>
-      {/* advertising */}
+    <div className="lg:mx-0 md:mx-5 mx-5">
       <Image
         layout="responsive"
         width={100}
@@ -33,49 +32,48 @@ export default function Index({ data }) {
         objectFit="cover"
         src="/sport.jpg"
       />
-      {/* end advertising */}
       <div className="grid md:grid-cols-3 gap-5 my-5">
-        <div className="md:col-span-2 xs:col-span-1 shadow-lg big_artical">
-          <Image
-            src="/team.jpg"
-            className=" rounded-lg shadow-lg"
-            layout="fill"
-            width={100}
-            height={70}
-            objectFit="cover"
-          />
-          <article className="text-primary-100 space-y-2">
+        <div className="md:col-span-2 xs:col-span-1  rounded-md big_artical px-10">
+          <Image src="/team.jpg" className="big_artical_image" layout="fill" />
+          <article className="desc space-y-2">
             <div>
-              <a className="font-bold text-3xl text-primary-100 hover:text-accent cursor-pointer">
-                ញាក់សាច់ ពេលឃេីញ ផ្ទះលំហែ របស់អ្នកឧកញ៉ា​ សុខ​ គង់​ លេីភ្នំបូកគោ
-                ធំស្អាតអស់ទាស់ (មានវីដេអូ)
+              <a className="font-semi bold text-xl hover:text-primary-100 cursor-pointer">
+                ខ្ចិលប្រើឆ័ត្រពេលភ្លៀង!
               </a>
+              <p className="text-sm dark:text-black font-semibold">
+                បុរសម្នាក់អាយុ៤២ឆ្នាំ បានចំណាយពេល២ឆ្នាំ
+                ក្នុងការជីកដីជម្រៅ៣ម៉ែត្រ និងប្រវែង១២ម៉ែត្រពីផ្ទះរបស់គាត់
+              </p>
             </div>
             <div className="flex items-center gap-2">
-              <h3 className="text-sm border-2 text-black font-sans py-1 px-2 bg-primary-100 rounded-lg w-auto">
+              <h3 className="text-sm border-2 text-white p-1 bg-primary-100 rounded-lg w-auto">
                 កីទ្បា
               </h3>
-              <h4 className="text-sm text-primary-100 flex items-center">
-                Written by
-                <span className="font-bold text-lg"> &nbsp;Summer</span>
+              <h4 className="text-sm">
+                Written by{" "}
+                <span className="font-bold text-lg text-primary-100">
+                  Summer
+                </span>{" "}
               </h4>
             </div>
             <div className="flex gap-5">
               <div className="flex gap-2">
                 <CalendarIcon className="w-4" />
-                <span className="text-sm text-white">27-March-2021 </span>
+                <span className="text-sm font-semibold">27-March-2021 </span>
               </div>
               <div className="flex gap-2">
                 <ClockIcon className="w-4" />
-                <span className="text-sm text-white">3pm - 18 hour ago </span>
+                <span className="text-sm font-semibold">
+                  3pm - 18 hour ago{" "}
+                </span>
               </div>
             </div>
           </article>
         </div>
-        {data.results.map((item) => {
+        {news.map((item) => {
           return (
             <div
-              className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-primary-100"
+              className="max-w-sm rounded-lg overflow-hidden shadow-lg"
               key={item.id}
             >
               <Image
@@ -83,15 +81,13 @@ export default function Index({ data }) {
                 width={100}
                 height={50}
                 objectFit="cover"
-                src={item.thumbnail}
+                src="/sport.jpg"
                 alt={item.title}
               />
               <article className="p-3 space-y-2">
                 <div className="space-y-2">
-                  <CardTitle slug={`/article/${item.id}`}>
-                    {item.title}
-                  </CardTitle>
-                  <CardDesc length={90}>{item.description}</CardDesc>
+                  <CardTitle slug="/noslug">{item.title}</CardTitle>
+                  <CardDesc>{item.description}</CardDesc>
                 </div>
                 <div className="flex items-center gap-2">
                   <NewsType> Sport </NewsType>
@@ -100,7 +96,7 @@ export default function Index({ data }) {
                 <div className="flex w-full">
                   <Dateformat>{item.created_at}</Dateformat>
                   <div className="flex gap-2">
-                    <Timeformat>{item.created_at}</Timeformat>
+                    <Timeformat>{item.update_at}</Timeformat>
                   </div>
                 </div>
               </article>
@@ -108,12 +104,11 @@ export default function Index({ data }) {
           );
         })}
       </div>
-
       <Label>អត្ថបទចុងក្រោយ</Label>
       <div className="grid lg:grid-cols-3 gap-5 article mb-5">
         {/* អត្ថបទចុងក្រោយ */}
         <div className="md:col-span-2 col-span-0">
-          {data.results.map((item) => {
+          {news.map((item) => {
             return (
               <div className="grid lg:grid-cols-2 mb-5">
                 <Image
@@ -125,12 +120,10 @@ export default function Index({ data }) {
                   alt={item.title}
                   className="rounded-lg"
                 />
-                <article className="lg:p-3 p-0 lg:pt-0 md:pt-3 pt-3 space-y-2">
+                <article className="p-3 space-y-2">
                   <div className="space-y-2">
-                    <CardTitle slug="/noslug" length={60}>
-                      {item.title}
-                    </CardTitle>
-                    <CardDesc length={80}>{item.description}</CardDesc>
+                    <CardTitle slug="/noslug">{item.title}</CardTitle>
+                    <CardDesc>{item.description}</CardDesc>
                   </div>
                   <div className="flex items-center gap-2">
                     <NewsType>Sport</NewsType>
@@ -160,9 +153,9 @@ export default function Index({ data }) {
           {/* end advertising */}
           <div>
             <Label>អត្ថបទប្រចាំសប្តាហ៍</Label>
-            {data.results.map((item) => {
+            {news.map((item) => {
               return (
-                <div className="grid grid-cols-2 gap-2 my-4">
+                <div className="grid grid-cols-2 gap-3 my-4">
                   <div>
                     <Image
                       src="/team.jpg"
@@ -173,14 +166,12 @@ export default function Index({ data }) {
                     />
                   </div>
                   <div>
-                    <article className="space-y-1 mb-3">
+                    <article className="space-y-2 mb-3">
                       <div>
-                        <CardTitle slug="/noslug" length={18}>
-                          {item.title}
-                        </CardTitle>
-                        <CardDesc length={60}>{item.description}</CardDesc>
-                      </div>
-                      <div>
+                        <CardTitle slug="/noslug">ញាក់សាច់!</CardTitle>
+                        <CardDesc>
+                          មកដឹងពីតម្លៃសំបុត្រចូលរួមទស្សនាការប្រកួតប្រដាល់របស់Floyd
+                        </CardDesc>
                         <Author>{item.author}</Author>
                       </div>
                     </article>
@@ -199,4 +190,6 @@ export default function Index({ data }) {
       </div>
     </div>
   );
-}
+};
+
+export default CategoryDetail;

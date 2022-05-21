@@ -1,39 +1,70 @@
-import { CalendarIcon } from "@heroicons/react/solid";
+import { CalendarIcon, ClockIcon } from "@heroicons/react/solid";
 import Link from "next/link";
+import moment from "moment";
+
 const Label = ({ children }) => {
-  return <h1 className="text-2xl font-semibold my-3 ml-3"> {children} </h1>;
+  return <h1 className="text-3xl text-black font-semibold my-4"> {children} </h1>;
 };
 
-const CardTitle = ({ children, slug = "noslug" }) => {
+const CardTitle = ({ children, slug = "noslug", length }) => {
   return (
-    <div className="font-semibold text-xl hover:text-primary-100 cursor-pointer">
-      <Link href={slug}>
-        <a>{children}</a>
-      </Link>
-    </div>
+    <Link href={slug}>
+      <a className="font-semibold text-xl text-black hover:text-accent cursor-pointer">
+        {children.slice(0, length)}
+      </a>
+    </Link>
   );
 };
-const CardDesc = ({children}) => {
+
+const CardDesc = ({ children, length }) => {
   return (
-    <p className="text-sm dark:text-black font-semibold">
-      {children}
+    <p className="text-sm text-black">
+      {children.slice(0, length) + "..."}
     </p>
   );
 };
-const Dateformat = ({ date }) => {
+
+const NewsType = ({ children }) => {
   return (
-    <div className="flex gap-2">
-      <div className="flex gap-2">
-        <CalendarIcon className="w-4" />
-        {/* <span className="text-sm font-semibold">{moment(date).format('DD-MM-YYYY')} </span> */}
+    <h3 className="text-sm text-black font-sans p-1 bg-accent rounded-lg w-auto">
+      {children}
+    </h3>
+  );
+};
+
+const Author = ({ children }) => {
+  return (
+    <h4 className="text-sm">
+      Written by{" "}
+      <span className="font-bold text-md text-accent ">{children}</span>
+    </h4>
+  );
+};
+
+const Dateformat = ({ children }) => {
+  return (
+    <div className="flex gap-2" style={{ width: "45%" }}>
+      <div className="flex items-center" style={{ gap: "2px"}}>
+        <CalendarIcon className="w-4 text-black" />
+        <span className="text-sm text-black">
+          {moment(children).format("DD-MM-YYYY")}{" "}
+        </span>
       </div>
     </div>
   );
 };
-const Author = ({children}) => {
-    return (
-        <h4 className="text-sm">Written by <span className="font-bold text-lg text-primary-100">{children}</span> </h4>
-    )
-}
 
-export { Label, Dateformat, CardTitle , CardDesc , Author };
+const Timeformat = ({ children }) => {
+  return (
+    <div className="flex gap-2" style={{ width: "55%" }}>
+      <div className="flex items-center" style={{ gap: "2px"}}>
+        <ClockIcon className="w-4 text-black" />
+        <span className="text-sm text-black">
+          {moment(children).format("HH:mm")}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+export { Label, Dateformat, CardTitle, CardDesc, Author, NewsType, Timeformat };
