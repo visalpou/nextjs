@@ -3,7 +3,7 @@ import Link from "next/link";
 import moment from "moment";
 
 const Label = ({ children }) => {
-  return <h1 className="text-3xl text-black font-semibold my-4"> {children} </h1>;
+  return <h1 className="lg:text-3xl md:text-3xl text-2xl text-primary-900 font-semibold my-4"> {children} </h1>;
 };
 
 const CardTitle = ({ children, slug = "noslug", length }) => {
@@ -16,10 +16,10 @@ const CardTitle = ({ children, slug = "noslug", length }) => {
   );
 };
 
-const CardDesc = ({ children, length }) => {
+const CardDesc = ({ children, length , dot }) => {
   return (
-    <p className="text-sm text-black">
-      {children.slice(0, length) + "..."}
+    <p className="text-md text-black">
+      {children.slice(0, length) + dot}
     </p>
   );
 };
@@ -35,8 +35,7 @@ const NewsType = ({ children }) => {
 const Author = ({ children }) => {
   return (
     <h4 className="text-sm">
-      Written by{" "}
-      <span className="font-bold text-md text-accent ">{children}</span>
+      Written by <span className="font-bold text-md text-accent ">{children}</span>
     </h4>
   );
 };

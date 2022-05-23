@@ -1,6 +1,7 @@
 import { CalendarIcon, ClockIcon } from "@heroicons/react/solid";
 import env from "./../env";
 import Image from "next/image";
+import Link from "next/link";
 import {
   CardTitle,
   CardDesc,
@@ -35,47 +36,53 @@ export default function Index({ data }) {
       />
       {/* end advertising */}
       <div className="grid md:grid-cols-3 gap-5 my-5">
-        <div className="md:col-span-2 xs:col-span-1 shadow-lg big_artical">
-          <Image
-            src="/team.jpg"
-            className=" rounded-lg shadow-lg"
-            layout="fill"
-            width={100}
-            height={70}
-            objectFit="cover"
-          />
-          <article className="text-primary-100 space-y-2">
-            <div>
-              <a className="font-bold text-3xl text-primary-100 hover:text-accent cursor-pointer">
-                ញាក់សាច់ ពេលឃេីញ ផ្ទះលំហែ របស់អ្នកឧកញ៉ា​ សុខ​ គង់​ លេីភ្នំបូកគោ
-                ធំស្អាតអស់ទាស់ (មានវីដេអូ)
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <h3 className="text-sm border-2 text-black font-sans py-1 px-2 bg-primary-100 rounded-lg w-auto">
-                កីទ្បា
-              </h3>
-              <h4 className="text-sm text-primary-100 flex items-center">
-                Written by
-                <span className="font-bold text-lg"> &nbsp;Summer</span>
-              </h4>
-            </div>
-            <div className="flex gap-5">
-              <div className="flex gap-2">
-                <CalendarIcon className="w-4" />
-                <span className="text-sm text-white">27-March-2021 </span>
+        <div className="md:col-span-2 xs:col-span-1 shadow-lg relative">
+          <div
+            className="p-12 text-center relative overflow-hidden bg-no-repeat bg-cover rounded-lg"
+            style={{ backgroundImage: "url('/team.jpg')", height: "400px" }}
+          >
+            <div
+              className="absolute bg-fixed bottom-0 overflow-hidden w-full"
+              style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+            >
+              <div className="flex items-center h-full">
+                <article className="text-primary-100 space-y-2 p-3">
+                  <Link href="/content">
+                    <a className="font-bold lg:text-2xl md:text-xl text:sm text-primary-100 hover:text-accent cursor-pointer">
+                      ញាក់សាច់ ពេលឃេីញ ផ្ទះលំហែ របស់អ្នកឧកញ៉ា​ សុខ​ គង់​
+                      លេីភ្នំបូកគោ ធំស្អាតអស់ទាស់
+                    </a>
+                  </Link>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-sm border-2 text-black font-sans py-1 px-2 bg-primary-100 rounded-lg w-auto">
+                      កីទ្បា
+                    </h3>
+                    <h4 className="text-sm text-primary-100 flex items-center">
+                      Written by
+                      <span className="font-bold text-lg"> &nbsp;Summer</span>
+                    </h4>
+                  </div>
+                  <div className="flex gap-5">
+                    <div className="flex gap-2">
+                      <CalendarIcon className="w-4" />
+                      <span className="text-sm text-white">27-March-2021 </span>
+                    </div>
+                    <div className="flex gap-2">
+                      <ClockIcon className="w-4" />
+                      <span className="text-sm text-white">
+                        3pm - 18 hour ago
+                      </span>
+                    </div>
+                  </div>
+                </article>
               </div>
-              <div className="flex gap-2">
-                <ClockIcon className="w-4" />
-                <span className="text-sm text-white">3pm - 18 hour ago </span>
-              </div>
             </div>
-          </article>
+          </div>
         </div>
         {data.results.map((item) => {
           return (
             <div
-              className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-primary-100"
+              className="rounded-lg overflow-hidden shadow-lg bg-primary-100"
               key={item.id}
             >
               <Image
@@ -91,7 +98,7 @@ export default function Index({ data }) {
                   <CardTitle slug={`/article/${item.id}`}>
                     {item.title}
                   </CardTitle>
-                  <CardDesc length={90}>{item.description}</CardDesc>
+                  <CardDesc length={90} dot="....">{item.description}</CardDesc>
                 </div>
                 <div className="flex items-center gap-2">
                   <NewsType> Sport </NewsType>
@@ -121,16 +128,16 @@ export default function Index({ data }) {
                   width={100}
                   height={50}
                   objectFit="cover"
-                  src="/sport.jpg"
+                  src={item.thumbnail}
                   alt={item.title}
                   className="rounded-lg"
                 />
                 <article className="lg:p-3 p-0 lg:pt-0 md:pt-3 pt-3 space-y-2">
                   <div className="space-y-2">
-                    <CardTitle slug="/noslug" length={60}>
+                    <CardTitle slug={`/article/${item.id}`} length={60}>
                       {item.title}
                     </CardTitle>
-                    <CardDesc length={80}>{item.description}</CardDesc>
+                    <CardDesc length={80} dot="....">{item.description}</CardDesc>
                   </div>
                   <div className="flex items-center gap-2">
                     <NewsType>Sport</NewsType>
@@ -165,7 +172,7 @@ export default function Index({ data }) {
                 <div className="grid grid-cols-2 gap-2 my-4">
                   <div>
                     <Image
-                      src="/team.jpg"
+                      src={item.thumbnail}
                       width={1000}
                       height={600}
                       objectFit="cover"
@@ -175,10 +182,10 @@ export default function Index({ data }) {
                   <div>
                     <article className="space-y-1 mb-3">
                       <div>
-                        <CardTitle slug="/noslug" length={18}>
+                        <CardTitle slug={`/article/${item.id}`} length={18}>
                           {item.title}
                         </CardTitle>
-                        <CardDesc length={60}>{item.description}</CardDesc>
+                        <CardDesc length={60} dot="....">{item.description}</CardDesc>
                       </div>
                       <div>
                         <Author>{item.author}</Author>
