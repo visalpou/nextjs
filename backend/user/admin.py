@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from .models import User
+from django.contrib.auth.admin import UserAdmin
 
 
 @admin.register(User)
-class UserAdmin(admin.ModelAdmin):
+class UserAdmin(UserAdmin):
     list_display = ('email', 'first_name', 'last_name',
                     'is_staff', 'is_active')
     list_filter = ('is_staff', 'is_active')
@@ -15,5 +16,5 @@ class UserAdmin(admin.ModelAdmin):
         (None, {'fields': ('email', 'password')}),
         (_('Personal info'), {'fields': ('first_name', 'last_name')}),
         (_('Permissions'), {'fields': ('is_active',
-         'is_staff', 'groups', 'user_permissions')}),
+         'is_staff', 'groups')}),
     )
