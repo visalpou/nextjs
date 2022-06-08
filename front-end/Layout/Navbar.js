@@ -45,11 +45,15 @@ function Navbar({ topic }) {
         </Link>
         {renderThemeChange()}
       </div>
-      <nav className="py-2 flex justify-center items-center bg-primary-100">
+      <nav className="py-2 flex justify-center items-center bg-primary-100 overflow-auto md:overflow-hidden lg:overflow-hidden">
         {topic?.map((item, index) => {
           return (
             <Link href={`/topic/${item.slug}`} key={index}>
-            <div className="border-r-2 cursor-pointer"> <a className="uppercase text-black hover:text-accent hover:underline font-medium text-xl px-5">{item.name}</a></div>             
+              <div className="border-r-2 cursor-pointer">
+                <a className="uppercase text-black hover:text-accent hover:underline font-medium text-sm md:text-xl lg:text-xl px-5">
+                  {item.name}
+                </a>
+              </div>
             </Link>
           );
         })}

@@ -39,7 +39,7 @@ export default function Index({ data }) {
         <div className="md:col-span-2 xs:col-span-1 shadow-lg relative">
           <div
             className="p-12 text-center relative overflow-hidden bg-no-repeat bg-cover rounded-lg"
-            style={{ backgroundImage: "url('/team.jpg')", height: "400px" }}
+            style={{ backgroundImage: "url('/team.jpg')", height: "330px" }}
           >
             <div
               className="absolute bg-fixed bottom-0 overflow-hidden w-full"
@@ -95,14 +95,18 @@ export default function Index({ data }) {
               />
               <article className="p-3 space-y-2">
                 <div className="space-y-2">
-                  <CardTitle slug={`/article/${item.id}`}>
+                  <CardTitle length={40} slug={`/article/${item.id}`}>
                     {item.title}
                   </CardTitle>
-                  <CardDesc length={90} dot="....">{item.description}</CardDesc>
+                  <CardDesc length={90} dot="....">
+                    {item.description}
+                  </CardDesc>
                 </div>
                 <div className="flex items-center gap-2">
                   <NewsType> Sport </NewsType>
-                  <Author>{item.author}</Author>
+                  <h4 className="text-sm">
+                    Written by <Author slug={`/author/${item.id}`}>{item.author}</Author>
+                  </h4>
                 </div>
                 <div className="flex w-full">
                   <Dateformat>{item.created_at}</Dateformat>
@@ -122,7 +126,7 @@ export default function Index({ data }) {
         <div className="md:col-span-2 col-span-0">
           {data.results.map((item) => {
             return (
-              <div className="grid lg:grid-cols-2 mb-5">
+              <div className="grid lg:grid-cols-2 mb-5" key={item.id}>
                 <Image
                   layout="responsive"
                   width={100}
@@ -137,11 +141,16 @@ export default function Index({ data }) {
                     <CardTitle slug={`/article/${item.id}`} length={60}>
                       {item.title}
                     </CardTitle>
-                    <CardDesc length={80} dot="....">{item.description}</CardDesc>
+                    <CardDesc length={80} dot="....">
+                      {item.description}
+                    </CardDesc>
                   </div>
                   <div className="flex items-center gap-2">
                     <NewsType>Sport</NewsType>
-                    <Author>{item.author}</Author>
+                    <h4 className="text-sm">
+                      Written by{" "}
+                      <Author slug={`/author/${item.id}`}>{item.author}</Author>
+                    </h4>
                   </div>
                   <div className="flex gap-5">
                     <Dateformat>{item.created_at}</Dateformat>
@@ -169,7 +178,7 @@ export default function Index({ data }) {
             <Label>អត្ថបទប្រចាំសប្តាហ៍</Label>
             {data.results.map((item) => {
               return (
-                <div className="grid grid-cols-2 gap-2 my-4">
+                <div className="grid grid-cols-2 gap-2 my-4" key={item.id}>
                   <div>
                     <Image
                       src={item.thumbnail}
@@ -185,10 +194,14 @@ export default function Index({ data }) {
                         <CardTitle slug={`/article/${item.id}`} length={18}>
                           {item.title}
                         </CardTitle>
-                        <CardDesc length={60} dot="....">{item.description}</CardDesc>
+                        <CardDesc length={30} dot="....">
+                          {item.description}
+                        </CardDesc>
                       </div>
                       <div>
-                        <Author>{item.author}</Author>
+                        <h4 className="text-sm">
+                          Written by <Author slug={`/author/${item.id}`}>{item.author}</Author>
+                        </h4>
                       </div>
                     </article>
                   </div>
