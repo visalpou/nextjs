@@ -30,7 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'martor',
+    'drf_yasg',
     'rest_framework',
+    'rest_framework.authtoken',
+    'django_filters',
     'user',
     'news'
 ]
@@ -86,18 +89,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 
@@ -120,20 +123,19 @@ USE_TZ = True
 
 # if production, use Amazon S3
 if DEBUG:
-    STATIC_URL = '/static/static/'
     MEDIA_URL = '/static/media/'
-
-    STATICFILES_DIRS = (
-        os.path.join(CORE_DIR, 'static'),
-    )
+    STATIC_URL = '/static/static/'
 
     MEDIA_ROOT = '/vol/web/media'
     STATIC_ROOT = '/vol/web/static'
+
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
+
 else:
     STATIC_URL = 'https://s3.amazonaws.com/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     MEDIA_URL = 'https://s3.amazonaws.com/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
@@ -149,7 +151,7 @@ else:
     AWS_S3_PUBLIC_URL = 'https://s3.amazonaws.com/'
     AWS_S3_CUSTOM_DOMAIN = 's3.amazonaws.com'
     AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
-    AWS_S3_REGION_NAME = 'us-east-1'
+    AWS_S3_REGION_NAME = ''
     AWS_S3_FILE_OVERWRITE = False
 
 
@@ -175,7 +177,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
@@ -183,6 +185,9 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 
 }
 
@@ -216,7 +221,7 @@ MARTOR_MARKDOWN_EXTENSIONS = [
     'martor.extensions.escape_html',  # to handle the XSS vulnerabilities
 ]
 
-MARTOR_UPLOAD_URL = '/martor/uploader/'  # default
+MARTOR_UPLOAD_URL = 'martor/image_upload/'  # default
 MARTOR_SEARCH_USERS_URL = '/martor/search-user/'  # default
 
 # Markdown Extensions

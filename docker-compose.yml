@@ -36,3 +36,8 @@ services:
       - ./data/db:/var/lib/postgresql/data
     ports:
       - 5454:5454
+
+  ads:
+    container_name: tos-merl.ads
+    image: krish512/revive:latest
+    

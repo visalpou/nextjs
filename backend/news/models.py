@@ -22,6 +22,8 @@ class Topic(CoreModel):
     
 class News(CoreModel):
     title = models.CharField(max_length=100)
+    thumbnail = models.ImageField(upload_to=get_file_path, blank=True)
+    thumbnail_share = models.ImageField(upload_to=get_file_path, blank=True)
     description = models.TextField(max_length=500)
     content = models.TextField()
     topics = models.ManyToManyField(Topic,blank=True)
