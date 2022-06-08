@@ -13,7 +13,7 @@ const Label = ({ children }) => {
 const CardTitle = ({ children, slug = "noslug", length }) => {
   return (
     <Link href={slug}>
-      <a className="font-semibold text-xl text-black hover:text-accent cursor-pointer">
+      <a className="font-semibold text-xl text-button hover:text-accent cursor-pointer">
         {children.slice(0, length) + "..."}
       </a>
     </Link>
@@ -22,13 +22,13 @@ const CardTitle = ({ children, slug = "noslug", length }) => {
 
 const CardDesc = ({ children, length, dot }) => {
   return (
-    <p className="text-md text-black">{children.slice(0, length) + dot}</p>
+    <p className="text-md text-button">{children.slice(0, length) + dot}</p>
   );
 };
 
 const NewsType = ({ children }) => {
   return (
-    <h3 className="text-sm text-black font-sans p-1 bg-accent rounded-lg w-auto">
+    <h3 className="text-sm text-button font-sans p-1 bg-accent rounded-lg w-auto">
       {children}
     </h3>
   );
@@ -48,8 +48,8 @@ const Dateformat = ({ children }) => {
   return (
     <div className="flex gap-2" style={{ width: "45%" }}>
       <div className="flex items-center" style={{ gap: "2px" }}>
-        <CalendarIcon className="w-4 text-black" />
-        <span className="text-sm text-black">
+        <CalendarIcon className="w-4 text-button" />
+        <span className="text-sm text-button">
           {moment(children).format("DD-MM-YYYY")}{" "}
         </span>
       </div>
@@ -61,8 +61,8 @@ const Timeformat = ({ children }) => {
   return (
     <div className="flex gap-2" style={{ width: "55%" }}>
       <div className="flex items-center" style={{ gap: "2px" }}>
-        <ClockIcon className="w-4 text-black" />
-        <span className="text-sm text-black">
+        <ClockIcon className="w-4 text-button" />
+        <span className="text-sm text-button">
           {moment(children).format("HH:mm")}
         </span>
       </div>

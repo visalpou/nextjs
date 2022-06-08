@@ -22,6 +22,7 @@ module.exports = {
       text: "var(--color-text)",
       button: "var(--color-button-text)",
       transparent: "transparent",
+      translucent: "var(--color-primary-100-translucent)",
       primary: {
         100: "var(--color-primary-100)",
         200: "var(--color-primary-200)", 

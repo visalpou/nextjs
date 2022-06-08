@@ -82,7 +82,7 @@ export default function Index({ data }) {
         {data.results.map((item) => {
           return (
             <div
-              className="rounded-lg overflow-hidden shadow-lg bg-primary-100"
+              className="rounded-lg overflow-hidden shadow-lg bg-translucent"
               key={item.id}
             >
               <Image

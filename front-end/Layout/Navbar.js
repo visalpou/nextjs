@@ -38,7 +38,7 @@ function Navbar({ topic }) {
 
   return (
     <div className="fixed w-full z-50">
-      <div className="flex justify-around py-5 bg-primary-900 text-white">
+      <div className="flex justify-around py-5 bg-primary text-button">
         <BeakerIcon className="w-4" />
         <Link href="/">
           <a className="text-3xl font-medium">តោះមើល</a>

@@ -36,7 +36,7 @@ p.bold {
   --color-accent-hover: #ffd52e;
   --color-accent-disabled: #f1e39a;
   --screen-height-reduction: 0px;
-  --color-primary-100-translucent: rgba(222, 227, 234, 0.15);
+  --color-primary-100-translucent: rgba(64, 64, 64, 0.09);
 }
 .dark {
   font-size: 14px;
